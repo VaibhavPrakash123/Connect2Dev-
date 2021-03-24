@@ -5,8 +5,8 @@ const mongouri = config.get('mongouri');
 const connectdb = async () => {
 try{
 
-    await mongoose.connect(mongouri, {useUnifiedTopology : true});
-    console.log("Databse Connected");
+    await mongoose.connect(mongouri, {useUnifiedTopology : true, useNewUrlParser: true});
+    console.log("Database Connected");
 }catch(err)
 {
     console.error(err);
