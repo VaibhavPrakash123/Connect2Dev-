@@ -4,6 +4,8 @@ const router = express.Router();
 const User = require('../models/user.js');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 
 router.post('/',[
@@ -43,7 +45,20 @@ router.post('/',[
         user.password = await bcrypt.hash(password,salt);
         await user.save();
 
-        res.send('User Registered');
+        
+
+        //Generate JWT token
+
+        //Payload to be sent to JWT
+        const payload = {
+            user:{
+                id : user.id
+            }
+        };
+       const token =  jwt.sign(payload,
+            config.get('jwtSecret'),
+            { expiresIn: 360000 });
+        res.status(200).send({token: token});
     }
     catch(err)
     {
