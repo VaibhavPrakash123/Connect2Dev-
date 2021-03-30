@@ -14,7 +14,8 @@ router.get('/',auth, async(req,res)=>{
     try{
         //fetch user from auth middleware 
         const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
+        
+        return res.json(user);
 
     }catch(err)
     {

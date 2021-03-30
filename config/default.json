@@ -1,4 +1,0 @@
-{
-    "mongouri" : "mongodb+srv://Vaibhav:vaibhav@cluster0.84yry.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret" : "myjwtsecret"
-}

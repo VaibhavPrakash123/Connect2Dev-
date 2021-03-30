@@ -23,7 +23,7 @@ router.post('/',[
         let user = await User.findOne({email});
         //If user already exists
         if(user){
-            res.status(400).json({errors: [{ msg : 'User already exists'}]});
+           return res.status(400).json({errors: [{ msg : 'User already exists'}]});
         }
 
         //Retrieve gravtar for user
@@ -57,7 +57,7 @@ router.post('/',[
         };
        const token =  jwt.sign(payload,
             config.get('jwtSecret'),
-            { expiresIn: 360000 });
+            { expiresIn: 36000 });
         res.status(200).send({token: token});
     }
     catch(err)
