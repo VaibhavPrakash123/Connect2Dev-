@@ -3,26 +3,26 @@ const Schema  = mongoose.Schema;
 
 const PostSchema = new Schema({
 
-    user = {
+    user : {
         type : mongoose.Types.ObjectId,
         ref : 'users'
     },
 
-    text = {
+    text : {
         type: String,
         required: true
     },
 
-    name = {
+    name : {
         type: String,
-        required : true
+        
     },
 
-    avatar  = {
+    avatar  : {
         type : String
     },
 
-    likes = [{
+    likes : [{
         user:{
             type: mongoose.Types.ObjectId,
             ref: 'users'
@@ -30,29 +30,34 @@ const PostSchema = new Schema({
 
     }],
 
-    comments = [{
+    comments : [{
         user: {
             type : mongoose.Types.ObjectId,
             ref: 'users'
         },
-        name = {
+        name : {
             type: String,
             required : true
         },
     
-        avatar  = {
+        avatar  : {
             type : String
         },
 
-        date = {
+        date : {
             type: Date,
             default : Date.now()
+        },
+
+        text:{
+            type: String,
+            required: true
         }
     
 
     }],
 
-    date = {
+    date : {
         type : Date,
         default : Date.now()
     }

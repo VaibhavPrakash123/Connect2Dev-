@@ -7,7 +7,8 @@ try{
 
     await mongoose.connect(mongouri, {useUnifiedTopology : true, 
         useNewUrlParser: true,
-        useFindAndModify: false});
+        useFindAndModify: false,
+        useCreateIndex: true});
     console.log("Database Connected");
 }catch(err)
 {
